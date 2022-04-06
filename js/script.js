@@ -72,7 +72,6 @@ function generaBox(boxNumber, boxPerSide){
 function istruzioniGioco(){
     console.log(this)
     let num = parseInt(this.innerText);
-    attempts++
     //corrispondenza tra bomb e box
     if(bombArray.includes(num)){
         showBox();
@@ -81,13 +80,15 @@ function istruzioniGioco(){
         gameOver();
     } else {
         this.style.background = '#6495ED';
+        console.log(maxAttempt)
+        attempts++
+        console.log(attempts)
         if(attempts === maxAttempt){
             resultDiv.innerHTML += `<h1>Hai vinto!</h1>
             <h3>${attempts}</h3>`;
             showBox();
         }
     }
-    console.log(attempts)
     this.classList.remove('pointer')
     this.removeEventListener('click', istruzioniGioco);
 }
